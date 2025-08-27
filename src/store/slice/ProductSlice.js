@@ -14,7 +14,21 @@ const productSlice = createSlice({
     status: "idle",
     error: null,
   },
-  reducers: {},
+  reducers: {
+   
+    removeProduct: (state, action) => {
+      state.list = state.list.find((item) => item.id === action.id);
+      if (state.list) {
+        state.list = state.list.filter((item) => item.id !== action.id);
+      } else {
+        state.list.map((item) => (item.id === action.id ? { ...item, quantity: item.quantity - 1 } : item));
+      }
+    },
+
+    removeAll: (state, action) => {
+      state.list = [];
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
@@ -33,4 +47,5 @@ const productSlice = createSlice({
   },
 });
 
+export const { addProduct } = productSlice.actions;
 export default productSlice.reducer;
