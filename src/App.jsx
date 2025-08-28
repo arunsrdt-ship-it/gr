@@ -3,16 +3,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "./store/slice/ProductSlice";
 import Cart from "./components/Cart";
 import { addSingleData, removeOneItem } from "./store/slice/AddSlice";
-// import { addItems } from "./components/Cart";
+
 
 const App = () => {
   const gre = useSelector((state) => state.product.list);
 
   const dispatch = useDispatch();
 
-  // const handleAdd = (item) => {
-  //   state.addItems.push(item)
-  // }
+
 
   const handleAdd = (item) => {
     dispatch(addSingleData(item));
@@ -25,7 +23,7 @@ const App = () => {
   const isInCart = (id) => data.some((co) => co.id === id);
 
   const { list, status, error } = useSelector((state) => state.product);
-  
+   
   const { data } = useSelector((state) => state.addData);
   console.log("data", data);
   useEffect(() => {
@@ -35,7 +33,7 @@ const App = () => {
   return (
     <>
       <Cart />
-      {status === "loading" && <div>Loading.....</div>}
+      {status === "loading" && <div className="texl-3xl">Loading.....</div>}
       {status === "error" && <div>Error...</div>}
       {status === "succeeded" && (
         <div className="flex justify-center flex-wrap">
@@ -47,7 +45,9 @@ const App = () => {
                 <div className="box mt-2 font-bold text-2xl a col-span-1 col-start-1">{item.title}</div>
                 <div className="box mt-2 text-left  ml-2 a col-span-1 col-start-1">{item.description}</div>
                 <div className="box mt-2 text-left ml-2 a col-span-1 col-start-1">{item.category}</div>
-                <div className="box mt-2 font-bold text-left ml-2 a col-span-1 col-start-1">
+                <div className="box mt-2 font-bold text-left ml-2 a col-sp
+                
+                an-1 col-start-1">
                   ₹{item.price} <span className="text-red-400 font-thin text-sm">({item.discountPercentage}%)</span>
                 </div>
                 <div className="box mt-2 text-left ml-2 a col-span-1 col-start-1"></div>

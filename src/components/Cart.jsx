@@ -9,8 +9,6 @@ const Cart = () => {
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.addData);
 
-  
-
   const handleClick = () => {
     setToggle(true);
   };
@@ -20,10 +18,6 @@ const Cart = () => {
   };
 
   console.log("jk", data);
-  
-   
-  
-
 
   useEffect(() => {
     dispatch(fetchProducts());
